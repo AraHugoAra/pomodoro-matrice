@@ -1,4 +1,5 @@
 import React from "react"
+import ProgressBar from "./ProgressBar"
 
 export default function TasksList({ tasks, setTasks }) {
 
@@ -15,18 +16,22 @@ export default function TasksList({ tasks, setTasks }) {
     return(
         <>
             <h2>My Tasks</h2>
+            <ProgressBar tasks={tasks} />
             <ul className="list-group">
                 {tasks.map((task, index) => 
                 <li 
-                    className="d-flex justify-content-between align-items-center list-group-item" 
+                    className="d-flex justify-content-between align-items-center list-group-item pl-4" 
                     key={index} 
                 >
                     <input 
-                        className="form-check-input" 
+                        className="form-check-input mb-1" 
                         type="checkbox" 
+                        // name={index}
+                        id={index}
                         onChange={() => {handleCheck(task, index)}}
                     />
-                        {task.content}
+                    <label className="my-2" htmlFor={index}>{task.content}
+                    </label>
                     <button 
                         className="btn btn-danger"
                         onClick={(e) => handleDelete(e, task)}
