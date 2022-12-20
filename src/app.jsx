@@ -3,22 +3,21 @@ import NewTask from "./NewTask";
 import TasksList from "./TasksList";
 
 export default function App() {
-    const [taskList, setList] = useState(["Coucou petit perruche 🦜", "Le bébé 🐥"])
+    const [tasks, setTasks] = useState([
+        {content: "Coucou petit perruche 🦜", finished: false}, 
+        {content: "Le bébé 🐥", finished: false}
+    ])
 
     function handleSubmit(e) {
         e.preventDefault()
-        setList([...taskList, e.target.task.value])
+        setTasks([...tasks, {content: e.target.task.value, finished: false}])
         e.target.reset()
-    }
-    function handleDelete(e, task) {
-        e.preventDefault()
-        setList(taskList.filter(e => e !== task))
     }
 
   return (
     <>
         <h1 className="text-center">My Dashboard</h1>
-        <TasksList taskList={taskList} handleDelete={handleDelete} />
+        <TasksList tasks={tasks} setTasks={setTasks} />
         <NewTask handleSubmit={handleSubmit} />
     </>
   );
