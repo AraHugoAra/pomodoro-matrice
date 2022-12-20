@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import NewTask from "./NewTask";
 import TasksList from "./TasksList";
 
-export default function App() {
-    const [tasks, setTasks] = useState([
-        {content: "Coucou petit perruche 🦜", finished: false}, 
-        {content: "Le bébé 🐥", finished: false}
-    ])
+export default function MyTasks({ tasks, setTasks }) {
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -15,10 +11,9 @@ export default function App() {
     }
 
   return (
-    <>
-        <h1 className="text-center">My Dashboard</h1>
+    <div className="col" >
         <TasksList tasks={tasks} setTasks={setTasks} />
         <NewTask handleSubmit={handleSubmit} />
-    </>
+    </div>
   );
 }

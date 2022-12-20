@@ -15,8 +15,8 @@ export default function TasksList({ tasks, setTasks }) {
     }
     return(
         <>
-            <h2>My Tasks</h2>
             <ProgressBar tasks={tasks} />
+            <h3>My Tasks</h3>
             <ul className="list-group">
                 {tasks.map((task, index) => 
                 <li 
@@ -25,19 +25,25 @@ export default function TasksList({ tasks, setTasks }) {
                 >
                     <input 
                         className="form-check-input mb-1" 
-                        type="checkbox" 
-                        // name={index}
+                        type="checkbox"
                         id={index}
                         onChange={() => {handleCheck(task, index)}}
                     />
                     <label className="my-2" htmlFor={index}>{task.content}
                     </label>
-                    <button 
-                        className="btn btn-danger"
-                        onClick={(e) => handleDelete(e, task)}
-                    >
-                        X
-                    </button>
+                    <div>
+                        {!task.finished && <button 
+                            className="btn btn-info"
+                        >
+                            do now
+                        </button>}
+                        <button 
+                            className="btn btn-danger ml-1"
+                            onClick={(e) => handleDelete(e, task)}
+                        >
+                            X
+                        </button>
+                    </div>
                 </li>)}
             </ul>
         </>
