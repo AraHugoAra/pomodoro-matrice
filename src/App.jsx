@@ -9,9 +9,9 @@ export default function App() {
     ])
 
     return(
-        <div className="row">
+        <div className="row mt-4">
             <MyTasks tasks={tasks} setTasks={setTasks} />
-            <Currently tasks={tasks} />
+            <Currently tasks={tasks} setTasks={setTasks} />
         </div>
     )
 }

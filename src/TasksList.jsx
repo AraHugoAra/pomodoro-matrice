@@ -24,7 +24,7 @@ export default function TasksList({ tasks, setTasks }) {
     return(
         <>
             <ProgressBar tasks={tasks} />
-            <h3>My Tasks</h3>
+            <h3 className="mb-3">My Tasks</h3>
             <ul className="list-group">
                 {tasks.map((task, index) =>
                 <li 
@@ -34,6 +34,7 @@ export default function TasksList({ tasks, setTasks }) {
                     <input 
                         className="form-check-input mb-1" 
                         type="checkbox"
+                        checked={task.finished}
                         id={index}
                         onChange={() => handleCheck(task, index)}
                     />
