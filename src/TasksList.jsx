@@ -39,7 +39,7 @@ export default function TasksList({ tasks, setTasks }) {
                         onChange={() => handleCheck(task, index)}
                     />
                     <label className="my-2" htmlFor={index}>{task.content}</label>
-                    <div>
+                    <div className="d-flex">
                         {!task.finished && <button 
                             className="btn btn-info"
                             onClick={() => handleFocus(task, index)}
