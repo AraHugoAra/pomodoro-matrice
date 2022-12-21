@@ -5,20 +5,28 @@ export default function TasksList({ tasks, setTasks }) {
 
     function handleCheck(task, index) {
         const toUpdate = [...tasks]
-        toUpdate.splice(index, 1, {content: task.content, finished: !task.finished})
+        toUpdate.splice(index, 1, {...task, finished: !task.finished, focus: false})
         setTasks(toUpdate)
     }
-    
+
     function handleDelete(e, task) {
         e.preventDefault()
         setTasks(tasks.filter(e => e !== task))
     }
+
+    function handleFocus(task, index) {
+        //tous les focus sont reset à false pour éviter les doublons
+        const toUpdate = tasks.map(obj => Object.assign(obj, {...obj, focus: false}))
+        toUpdate.splice(index, 1, {...task, focus: true})
+        setTasks(toUpdate)
+    }
+
     return(
         <>
             <ProgressBar tasks={tasks} />
             <h3>My Tasks</h3>
             <ul className="list-group">
-                {tasks.map((task, index) => 
+                {tasks.map((task, index) =>
                 <li 
                     className="d-flex justify-content-between align-items-center list-group-item pl-4" 
                     key={index} 
@@ -27,13 +35,13 @@ export default function TasksList({ tasks, setTasks }) {
                         className="form-check-input mb-1" 
                         type="checkbox"
                         id={index}
-                        onChange={() => {handleCheck(task, index)}}
+                        onChange={() => handleCheck(task, index)}
                     />
-                    <label className="my-2" htmlFor={index}>{task.content}
-                    </label>
+                    <label className="my-2" htmlFor={index}>{task.content}</label>
                     <div>
                         {!task.finished && <button 
                             className="btn btn-info"
+                            onClick={() => handleFocus(task, index)}
                         >
                             do now
                         </button>}

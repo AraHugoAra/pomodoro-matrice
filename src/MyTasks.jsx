@@ -6,7 +6,7 @@ export default function MyTasks({ tasks, setTasks }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        setTasks([...tasks, {content: e.target.task.value, finished: false}])
+        setTasks([...tasks, {content: e.target.task.value, finished: false, focus: false}])
         e.target.reset()
     }
 
