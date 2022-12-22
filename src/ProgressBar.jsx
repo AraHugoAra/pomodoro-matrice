@@ -10,14 +10,17 @@ export default function ProgressBar({tasks}) {
     }, [tasks])
 
     return(
-        <div className="progress mb-3">
-            <div 
-                className="progress-bar" 
-                role="progressbar" 
-                style={{"width": `${progress}%`}}
-                aria-valuenow={progress}
-                aria-valuemin="0" 
-                aria-valuemax="100"></div>
+        <div className="d-flex align-items-center justify-content-between">
+            <p>Progess:</p>
+            <div className="progress my-4" style={{"width":"85%"}}>
+                <div 
+                    className="progress-bar" 
+                    role="progressbar" 
+                    style={{"width": `${progress}%`}}
+                    aria-valuenow={progress}
+                    aria-valuemin="0" 
+                    aria-valuemax="100"></div>
+            </div>
         </div>
     )
 }

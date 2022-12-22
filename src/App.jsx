@@ -12,9 +12,12 @@ export default function App() {
     useEffect(() => localStorage.setItem('tasks', JSON.stringify(tasks)), [tasks])
 
     return(
-        <div className="row mt-4">
-            <MyTasks tasks={tasks} setTasks={setTasks} />
-            <Currently tasks={tasks} setTasks={setTasks} />
+        <div style={{"height":"100vh"}} className="d-flex flex-column justify-content-center align-items-center bg-light">
+            <h1 class="text-center mb-4">My Dashboard</h1>
+            <div style={{"width":"80%"}} className="row shadow">
+                <MyTasks tasks={tasks} setTasks={setTasks} />
+                <Currently tasks={tasks} setTasks={setTasks} />
+            </div>
         </div>
     )
 }
