@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Timer from "./Timer"
+import { ThemeContext } from "./ThemeContext"
 
 export default function Currently({ tasks, setTasks }) {
   const [countdown, setCountdown] = useState(false)
@@ -21,8 +22,21 @@ export default function Currently({ tasks, setTasks }) {
     if(countdown) setCountdown(false)
   }
 
+  //Dark theme
+  let darktheme = useContext(ThemeContext)
+  const currentStyle = {
+    light: {
+        backgroundColor: "rgb(244, 230, 220)",
+        color: "black"
+    },
+    dark: {
+        backgroundColor: "rgb(44, 44, 44)",
+        color: "white"
+    }
+}
+
   return (
-    <div className="bg-transparent col d-flex flex-column justify-content-center align-items-center">
+    <div style={darktheme ? currentStyle.dark : currentStyle.light } className="col d-flex flex-column justify-content-center align-items-center">
         <h2 className="mb-5">Currently doing</h2>
         <p className="mb-5">
           {focused ? `${focused}` : "Not currently doing anything."}

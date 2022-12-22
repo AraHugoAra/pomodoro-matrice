@@ -1,6 +1,7 @@
-import React from "react";
-import NewTask from "./NewTask";
-import TasksList from "./TasksList";
+import React, { useContext } from "react"
+import NewTask from "./NewTask"
+import TasksList from "./TasksList"
+import { ThemeContext } from "./ThemeContext"
 
 export default function MyTasks({ tasks, setTasks }) {
 
@@ -10,8 +11,21 @@ export default function MyTasks({ tasks, setTasks }) {
         e.target.reset()
     }
 
+    //Dark theme
+    let darktheme = useContext(ThemeContext)
+    const myTasksStyle = {
+      light: {
+          backgroundColor: "white",
+          color: "black"
+      },
+      dark: {
+          backgroundColor: "rgb(21, 21, 21)",
+          color: "white"
+      }
+  }
+
   return (
-    <div className="col bg-white" >
+    <div style={darktheme ? myTasksStyle.dark : myTasksStyle.light} className="col" >
         <TasksList tasks={tasks} setTasks={setTasks} />
         <NewTask handleSubmit={handleSubmit} />
     </div>

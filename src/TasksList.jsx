@@ -1,5 +1,7 @@
 import React from "react"
 import ProgressBar from "./ProgressBar"
+import { ThemeContext } from "./ThemeContext"
+import { useContext } from "react"
 
 export default function TasksList({ tasks, setTasks }) {
 
@@ -21,6 +23,16 @@ export default function TasksList({ tasks, setTasks }) {
         setTasks(toUpdate)
     }
 
+    //Dark theme
+    let darktheme = useContext(ThemeContext)
+    const tasksListTheme = {
+        light: null,
+        dark: {
+            backgroundColor: "rgb(44, 44, 44)",
+            color: "white"
+        }
+    }
+
     return(
         <>
             {/* <p>Progess:</p> */}
@@ -30,7 +42,8 @@ export default function TasksList({ tasks, setTasks }) {
                 {tasks.map((task, index) =>
                 <li 
                     className="d-flex justify-content-between align-items-center list-group-item pl-4" 
-                    key={index} 
+                    key={index}
+                    style={darktheme ? tasksListTheme.dark : tasksListTheme.light}
                 >
                     <input 
                         className="form-check-input mb-1" 

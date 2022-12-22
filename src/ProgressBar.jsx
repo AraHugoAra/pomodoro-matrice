@@ -11,7 +11,7 @@ export default function ProgressBar({tasks}) {
 
     return(
         <div className="d-flex align-items-center justify-content-between">
-            <p>Progess:</p>
+            <p className="mb-0 mr-2" >Progess:</p>
             <div className="progress my-4" style={{"width":"85%"}}>
                 <div 
                     className="progress-bar" 
