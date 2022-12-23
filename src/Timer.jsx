@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 
 export default function Timer({countdown, minutes, seconds, setMinutes, setSeconds}) {
   const updateTime = () => {
-    if (seconds > 0) {
+    if(!minutes && !seconds) {
+      return false
+    } else if (seconds > 0) {
       setSeconds((s) => s - 1);
     } else {
       setSeconds(59);
