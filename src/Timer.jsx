@@ -15,13 +15,14 @@ export default function Timer({countdown, minutes, seconds, setMinutes, setSecon
 
     useEffect(() => {
         if(countdown){
-            const interval = setInterval(() => {updateTime()}, 1000)
-            return () => clearInterval(interval)
+            // const interval = setTimeout(() => {updateTime()}, 1000)
+            // return () => clearInterval(interval)
+            setTimeout(() => {updateTime()}, 1000)
         } else {
             setSeconds(0)
             setMinutes(25)
         }
-    }, [seconds, minutes, countdown])
+    }, [seconds, /* minutes, */ countdown])
 
     return(
         countdown ? (
