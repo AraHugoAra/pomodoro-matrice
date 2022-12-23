@@ -21,8 +21,8 @@ export default function Timer({countdown, minutes, seconds, setMinutes, setSecon
       setSeconds(0);
       setMinutes(25);
     }
+  // eslint-disable-next-line
   }, [seconds, /* minutes, */ countdown]);
-
   return countdown ? (
     <p className="display-4">
       {!seconds & !minutes
