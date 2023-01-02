@@ -33,7 +33,7 @@ export default function App() {
     light: {
       backgroundColor: "rgb(255, 244, 234)",
       color: "black",
-      height: "100vh",
+      minHeight: "100vh",
     },
     dark: {
       backgroundColor: "rgb(81, 81, 81)",
