@@ -38,7 +38,7 @@ export default function App() {
     dark: {
       backgroundColor: "rgb(81, 81, 81)",
       color: "white",
-      height: "100vh",
+      minHeight: "100vh",
     },
   };
 
