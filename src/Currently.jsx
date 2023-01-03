@@ -62,7 +62,7 @@ export default function Currently({ tasks, setTasks }) {
           onClick={() => setCountdown((cd) => !cd)}
           className="btn btn-warning mx-2"
         >
-          Start 25' timer
+          {!countdown ? "Start 25' timer" : "Stop the timer"}
         </button>
       </div>
       <Timer
